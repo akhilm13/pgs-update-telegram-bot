@@ -1,0 +1,8 @@
+{
+  "name": "akhilm13/psg-feed-tg-bot",
+  "type": "project",
+  "require": {
+    "php": ">=5.5",
+    "longman/telegram-bot": "*"
+  }
+}
