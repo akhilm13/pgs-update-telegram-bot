@@ -13,7 +13,12 @@ class PollWordPressRSSFeed
     private $numberOfPosts = 0;
     private $links = array();
 
-    public function getLinksFromRssFeed()
+    public function __construct(){
+    
+		$this->getLinksFromRssFeed();
+    }   
+
+    private function getLinksFromRssFeed()
     {
 
         $feed = simplexml_load_file($this->wordpressUrl);

@@ -8,10 +8,13 @@
  * file that was distributed with this source code.
  */
 
+
 namespace Longman\TelegramBot\Commands\SystemCommands;
 
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
+
+require_once('/home/strider/pgs-update-telegram-bot/src/DataManager.php');
 
 /**
  * Start command
@@ -44,6 +47,8 @@ class StartCommand extends SystemCommand
      * @var bool
      */
     protected $private_only = true;
+	
+	private $dataManager;
 
     /**
      * Command execute method
@@ -57,7 +62,11 @@ class StartCommand extends SystemCommand
 
         $chat_id = $message->getChat()->getId();
         $text    = 'Hi there!' . PHP_EOL . 'Thanks for subscribing. You will now be notified whenever there\'s a new post.';
+		$username = $message->getChat()->getUsername();
 
+		$dataManager = new \DataManager();
+		$dataManager->addNewUser($chat_id, $username);
+	
         $data = [
             'chat_id' => $chat_id,
             'text'    => $text,

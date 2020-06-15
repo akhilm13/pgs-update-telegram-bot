@@ -6,13 +6,13 @@
  * Time: 12:32
  */
 
-namespace Longman\TelegramBot\Commands\SystemCommands;
+namespace Longman\TelegramBot\Commands\UserCommands;
 
 
-use Longman\TelegramBot\Commands\SystemCommand;
+use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
-
-class UpdateCommandextends extends SystemCommand
+require_once('/home/strider/pgs-update-telegram-bot/src/NotifyReaders.php');
+class UpdateCommand extends UserCommand
 {
     /**
      * @var string
@@ -54,7 +54,9 @@ class UpdateCommandextends extends SystemCommand
         $chat_id = $message->getChat()->getId();
         $text = 'The feed will be updated.';
 
-
+	$notifyReaders = new \NotifyReaders();
+	$notifyReaders->notifyAllUsers();
+	
         $data = [
             'chat_id' => $chat_id,
             'text' => $text,

@@ -16,13 +16,13 @@ class Config
         $this->loadConfigurationValues();
     }
 
-    private $fileName = __DIR__ . '/../config/params';
+    private $fileName = __DIR__ . '/../config/params.yaml';
 
     private function loadConfigurationValues()
     {
         $configValues = yaml_parse_file($this->fileName);
-        $this->botApiKey = $configValues->api_key;
-        $this->botUsername = $configValues->bot_username;
+        $this->botApiKey = $configValues['api_key'];
+        $this->botUsername = $configValues['bot_username'];
     }
 
     /**
